@@ -51,7 +51,7 @@ $(PYTHON) $(PIP):
 ################
 
 test: $(VENV)/bin/py.test $(PYSRC) $(PIP)
-	$(PIP) install -U .
+	$(PIP) install -U . sqlalchemy
 	$(VENV)/bin/py.test tests
 
 tox: $(PYSRC) tox.ini $(TOX)
