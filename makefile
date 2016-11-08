@@ -51,8 +51,8 @@ $(PYTHON) $(PIP):
 ################
 
 test: $(VENV)/bin/py.test $(PYSRC) $(PIP)
-	$(PIP) install -U .
-	$(VENV)/bin/py.test tests
+	#$(PIP) install -U . httpretty
+	$(VENV)/bin/python setup.py test
 
 tox: $(PYSRC) tox.ini $(TOX)
 	$(TOX)

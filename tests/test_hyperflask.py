@@ -69,8 +69,7 @@ def app(database):
 
     @hf.resource('/people')
     def people():
-        Session = sessionmaker(bind=database.engine)
-        session = Session()
+        session = sessionmaker(bind=database.engine)()
         people = session.query(database.Person).all()
         return query_to_graph(people, namespace='http://schema.org/', ignore=['id'])
             
