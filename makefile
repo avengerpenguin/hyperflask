@@ -51,8 +51,8 @@ $(PYTHON) $(PIP):
 ################
 
 test: $(VENV)/bin/py.test $(PYSRC) $(PIP)
-	#$(PIP) install -U . httpretty
-	$(VENV)/bin/python setup.py test
+	$(PIP) install -U . sqlalchemy
+	$(VENV)/bin/py.test tests
 
 tox: $(PYSRC) tox.ini $(TOX)
 	$(TOX)
