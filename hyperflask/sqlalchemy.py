@@ -1,9 +1,9 @@
-from rdflib import Graph, BNode, URIRef, RDF
 from laconia import ThingFactory
+from rdflib import RDF, Graph, URIRef
 from sqlalchemy import inspect
 
 
-def query_to_graph(query, namespace='http://example.com/', ignore=()):
+def query_to_graph(query, namespace="http://example.com/", ignore=()):
 
     g = Graph()
     Thing = ThingFactory(g)
