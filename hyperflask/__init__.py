@@ -1,10 +1,10 @@
 from functools import wraps
-from rdflib import Graph
+
 from flask_rdf import flask_rdf
-from . import sqlalchemy
+from rdflib import Graph
 
 
-class Hyperflask(object):
+class Hyperflask:
     def __init__(self, flask_app):
         self.app = flask_app
 
@@ -15,7 +15,9 @@ class Hyperflask(object):
             @wraps(handler)
             def wrapper(*args, **kwargs):
                 return handler(*args, **kwargs)
+
             return wrapper
+
         return decorator
 
 
