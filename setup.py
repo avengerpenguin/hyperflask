@@ -4,7 +4,11 @@ from setuptools import setup
 
 setup(
     name="hyperflask",
-    version="0.0.0",
+    use_scm_version={
+        "local_scheme": "dirty-tag",
+        "write_to": "hyperflask/_version.py",
+        "fallback_version": "0.0.0",
+    },
     author="Ross Fenning",
     author_email="github@rossfenning.co.uk",
     description="Flask wrapper to encourage use of REST architectural style and Hypermedia.",
@@ -12,17 +16,17 @@ setup(
     install_requires=[
         "flask",
         "rdflib",
+        "requests",
         "flask_rdf",
         "laconia",
         "sqlalchemy",
     ],
     setup_requires=[
-        "pytest-runner",
+        "setuptools_scm>=3.3.1",
+        "pre-commit",
     ],
-    tests_require=[
-        "pytest",
-        "pytest-cov",
-        "pytest-xdist",
-    ],
+    extras_require={
+        "test": ["pytest", "httpretty"],
+    },
     packages=["hyperflask"],
 )
