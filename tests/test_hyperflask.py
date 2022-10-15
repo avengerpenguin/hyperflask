@@ -27,7 +27,9 @@ def people_data():
 @pytest.fixture
 def database():
     engine = create_engine("sqlite://", convert_unicode=True)
-    db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
+    db_session = scoped_session(
+        sessionmaker(autocommit=False, autoflush=False, bind=engine)
+    )
     Base = declarative_base()
     Base.query = db_session.query_property()
 
@@ -73,7 +75,9 @@ def app(database):
     def people():
         session = sessionmaker(bind=database.engine)()
         people = session.query(database.Person).all()
-        return query_to_graph(people, namespace="http://schema.org/", ignore=["id"])
+        return query_to_graph(
+            people, namespace="http://schema.org/", ignore=["id"]
+        )
 
     return app
 
