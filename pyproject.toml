@@ -1,5 +1,5 @@
 [tool.black]
-line-length = 79
+line-length = 120
 include = '\.pyi?$'
 exclude = '''
 # A regex preceded with ^/ will apply only to files and directories
@@ -36,3 +36,18 @@ addopts = "-vv --pikachu --mypy"
 testpaths = [
     "tests",
 ]
+
+[tool.poetry]
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dependencies.pylint]
+version = "*"
+optional = true
+
+[tool.poetry.extras]
+lint = ["pylint"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
